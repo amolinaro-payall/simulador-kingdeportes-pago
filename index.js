@@ -10,7 +10,7 @@ app.post("/gecko/api/payall/payin/", (request, response) =>
     console.log(request.body)
     console.log("<<<<<Fin Peticion>>>>>" + (nro))
     
-    if(request.body)
+    if(request.body.transaction_c2p.destination_bank_id != '0115' && request.body.transaction_c2p.trx_type == 'anulacion')
     {
         response.status(200).send(
             {
@@ -38,7 +38,7 @@ app.post("/gecko/api/payall/payin/", (request, response) =>
                 "user_id": "3536",
                 "amount": "10",
                 "currency": "USD",
-                "notas": "Gracias",
+                "notas": "Graias",
                 "date": "2022-07-20 23:36",
                 "payin": "3536",
                 "hash": "eb6c9fa9ca021704c3ccc27abc42346a",
