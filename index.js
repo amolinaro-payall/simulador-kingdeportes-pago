@@ -8,16 +8,17 @@ let envio = '{"method": "payin","transaction_id": "0X1234","user_id": "3536","am
 const datos = JSON.parse(envio);
 app.post("/gecko/api/payall/payin/", (request, response) =>
 {
+    response.setHeader('content-type', 'application/json');
     console.log("<<<<<Nueva Peticion:>>>>>" + (nro++))
     console.log(request.body)
     console.log("<<<<<Fin Peticion>>>>>" + (nro))
     
     if(request.body.transaction_c2p.destination_bank_id != '0115' && request.body.transaction_c2p.trx_type == 'anulacion')
     {
-        response.status(200).send(datos)
+        response.status(200).json(datos)
     }else
     {
-        response.status(200).send(datos)
+        response.status(200).json(datos)
     }
 })
 app.listen(puerto, () => console.log("Escuchando en el puerto: "+ puerto))
