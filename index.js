@@ -12,7 +12,7 @@ app.post("/gecko/api/payall/payin/", (request, response) =>
     
     if(request.body.transaction_c2p.destination_bank_id != '0115' && request.body.transaction_c2p.trx_type == 'anulacion')
     {
-        response.status(200).send(
+        response.status(200).json(
             {
                 "method": "payin",
                 "transaction_id": "0X1234",
@@ -31,7 +31,7 @@ app.post("/gecko/api/payall/payin/", (request, response) =>
         )
     }else
     {
-        response.status(200).send(
+        response.status(200).json(
             {
                 "method": "payin",
                 "transaction_id": "0X1234",
